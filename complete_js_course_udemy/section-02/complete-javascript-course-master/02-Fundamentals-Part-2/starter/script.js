@@ -238,7 +238,6 @@ if (jonas[interestedIn]) {
 jonas.location = 'New York';
 jonas['twitter'] = '@jonasschmedtman'
 console.log(jonas);
-*/
 
 // "Jonas has 3 friends, and his best friend is called Michael"
 const jonas = {
@@ -251,8 +250,86 @@ const jonas = {
 const challenge = jonas.firstName + ' has ' + jonas.friends.length + ' friends, and his best friend is called ' + jonas.friends[0]
 console.log(challenge);
 
-// OR
+// OR -- >> mdn operator precedence
 console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
+
+// Object Methods
+const jonas = {
+    firstName: 'Jonas',
+    lastName: 'Schmedtmann',
+    birthYear: 1993,
+    job: 'Treacher',
+    friends: ['Michael', 'Peter', 'Steven'],
+    hasDriverLicense: false,
+    
+    // define object method/function expression, statement does not work
+    // calcAge: function (birthYear) {
+    //     return 2037 - birthYear;
+    // }
+    
+    // this points to Object calling the method -> Using this. - object oriented programming
+    // calcAge: function () {
+    //     console.log(this);
+    //     return 2037 - this.birthYear;
+    
+    calcAge: function () {
+        this.age = 2037 - this.birthYear;   // add the age property for the object
+        return this.age;
+    },
+    
+    getSummary: function () {
+        return `${this.firstName} is a ${this.calcAge()}-year old ${jonas.job}, and he has ${this.hasDriverLicense ? 'a' : 'no'} driver's license.`
+    }
+}
+// console.log(jonas.calcAge(jonas.birthYear));   //dot notation
+// console.log(jonas['calcAge'](jonas.birthYear));
+console.log(`Jonas age is ` + jonas.calcAge() + ' years');
+console.log(jonas.age);
+
+// Chalenge
+// "Jonas is a 46-year old teacher, and he has a/no driver's license"
+console.log(jonas.getSummary());
+*/
+
+// Coding Challenge #3
+const mark = {
+    fullName: 'Mark Miller',
+    mass: 78,
+    height: 1.69,
+
+    // method for BMI calculation
+    calcBMI: function () {
+        this.bmi = this.mass / (this.height ** 2)
+        return this.bmi
+    }
+}
+
+const john = {
+    fullName: 'John Smith',
+    mass: 92,
+    height: 1.95,
+
+    // method for BMI calculation
+    calcBMI: function () {
+        this.bmi = this.mass / (this.height ** 2)
+        return this.bmi
+    }
+}
+// logging
+console.log(john.calcBMI());
+console.log(mark.calcBMI());
+
+if (john.bmi > mark.bmi) {
+    console.log(`${this.} BMI (${john.bmi}) is higher than Mark's (${mark.bmi})`)
+} else if (john.bmi < mark.bmi) {
+    console.log(`Mark's BMI (${mark.bmi}) is higher than John's (${john.bmi})`)
+} else {
+    console.log(`Both have same BMI;`)
+}
+
+
+
+
 
 
 
