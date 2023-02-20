@@ -261,22 +261,22 @@ const jonas = {
     job: 'Treacher',
     friends: ['Michael', 'Peter', 'Steven'],
     hasDriverLicense: false,
-    
+
     // define object method/function expression, statement does not work
     // calcAge: function (birthYear) {
     //     return 2037 - birthYear;
     // }
-    
+
     // this points to Object calling the method -> Using this. - object oriented programming
     // calcAge: function () {
     //     console.log(this);
     //     return 2037 - this.birthYear;
-    
+
     calcAge: function () {
         this.age = 2037 - this.birthYear;   // add the age property for the object
         return this.age;
     },
-    
+
     getSummary: function () {
         return `${this.firstName} is a ${this.calcAge()}-year old ${jonas.job}, and he has ${this.hasDriverLicense ? 'a' : 'no'} driver's license.`
     }
@@ -289,7 +289,6 @@ console.log(jonas.age);
 // Chalenge
 // "Jonas is a 46-year old teacher, and he has a/no driver's license"
 console.log(jonas.getSummary());
-*/
 
 // Coding Challenge #3
 const mark = {
@@ -320,17 +319,95 @@ console.log(john.calcBMI());
 console.log(mark.calcBMI());
 
 if (john.bmi > mark.bmi) {
-    console.log(`${this.} BMI (${john.bmi}) is higher than Mark's (${mark.bmi})`)
+    console.log(`${john.fullName}}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi})`)
 } else if (john.bmi < mark.bmi) {
-    console.log(`Mark's BMI (${mark.bmi}) is higher than John's (${john.bmi})`)
+    console.log(`${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s (${john.bmi})`)
 } else {
     console.log(`Both have same BMI;`)
 }
 
+// Loops - For
+// for loop keeps running while condition is true
+for (let rep = 1; rep <= 10; rep++) {
+    console.log(`Lifting weights repetitions ${rep} 🏋️`);
+}
+console.log("---------------");
+// INcrement more than 1
+for (let rep = 1; rep <= 10; rep += 2) {
+    console.log(`Lifting weights repetitions ${rep} 🏋️`);
+}
+const jonasArray = [
+    'Jonas',
+    'Schmedtmann',
+    2037 - 1993,
+    'Teacher',
+    ['Michael', 'Peter', 'Steven'],
+    { age: 34, profession: 'IT Analyst' }
+]
+// Index 6 does not Exist!!!
+// console.log(jonasArray[6]);
 
+const types = [];
+for (let i = 0; i < jonasArray.length; i++) {
+    // readig from array
+    console.log(jonasArray[i], typeof (jonasArray[i]))
+    
+    // add the types array
+    // types[i] = typeof jonasArray[i];
+    // OR
+    types.push(typeof jonasArray[i]);
+}
+console.log(types)
 
+const years = [1991, 2007, 1969, 2020];
+const ageArray = [];
 
+for (let i = 0; i < years.length; i++) {
+    const age = 2037 - years[i]
+    ageArray.push(age)
+}
+console.log(ageArray);
 
+// continue --> exit current teration and continue to next one
+// break --> exit from entire loop
+const jonasArray = [
+    'Jonas',
+    'Schmedtmann',
+    2037 - 1993,
+    'Teacher',
+    ['Michael', 'Peter', 'Steven'],
+    { age: 34, profession: 'IT Analyst' }
+]
+
+console.log('---- ONLY STRINGS ------');
+for (let i = 0; i < jonasArray.length; i++) {
+    
+    if (typeof (jonasArray[i]) !== 'string') continue;
+    console.log(jonasArray[i], typeof jonasArray[i],)
+    
+}
+
+console.log('---- BREAK WITH NUMBER ----');
+for (let i = 0; i < jonasArray.length; i++) {
+    if (typeof jonasArray[i] === 'number') break;
+    
+    console.log(jonasArray[i], typeof jonasArray[i]);
+}
+*/
+
+const jonasArray = [
+    'Jonas',
+    'Schmedtmann',
+    2037 - 1993,
+    'Teacher',
+    ['Michael', 'Peter', 'Steven'],
+    { age: 34, profession: 'IT Analyst' }
+];
+
+// looping from end of array
+for (let i = jonasArray.length - 1; i >= 0; i--) {
+    console.log(jonasArray[i], typeof jonasArray[i]);
+}
 
 
 
