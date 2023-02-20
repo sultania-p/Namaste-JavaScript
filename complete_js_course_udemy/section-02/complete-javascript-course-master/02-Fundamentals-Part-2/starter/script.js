@@ -351,7 +351,7 @@ const types = [];
 for (let i = 0; i < jonasArray.length; i++) {
     // readig from array
     console.log(jonasArray[i], typeof (jonasArray[i]))
-    
+
     // add the types array
     // types[i] = typeof jonasArray[i];
     // OR
@@ -381,19 +381,18 @@ const jonasArray = [
 
 console.log('---- ONLY STRINGS ------');
 for (let i = 0; i < jonasArray.length; i++) {
-    
+
     if (typeof (jonasArray[i]) !== 'string') continue;
     console.log(jonasArray[i], typeof jonasArray[i],)
-    
+
 }
 
 console.log('---- BREAK WITH NUMBER ----');
 for (let i = 0; i < jonasArray.length; i++) {
     if (typeof jonasArray[i] === 'number') break;
-    
+
     console.log(jonasArray[i], typeof jonasArray[i]);
 }
-*/
 
 const jonasArray = [
     'Jonas',
@@ -406,8 +405,63 @@ const jonasArray = [
 
 // looping from end of array
 for (let i = jonasArray.length - 1; i >= 0; i--) {
-    console.log(jonasArray[i], typeof jonasArray[i]);
+    console.log(i, jonasArray[i]);
 }
 
+for (let exercise = 1; exercise <= 3; exercise++) {
+    console.log(`----- Starting exercise ${exercise} -------`);
 
+    for (let rep = 1; rep < 6; rep++) {
+        console.log(`Exercise ${exercise}: Lifting weight repetition ${rep} 🏋️`);
+    }
+}
 
+// While Loop
+// Lifting weight repetition 1
+// Lifting weight repetition 2
+// Lifting weight repetition 3
+//..
+// Lifting weight repetition 10
+let rep = 1;
+while (rep <= 10) {
+    console.log(`Lifting weights repetition ${rep} 🏋️`);
+    rep++;
+}
+
+let dice = Math.floor(Math.random() * 6) + 1;
+
+while (dice !== 6) {
+    console.log(`You rolled a ${dice}`);
+    dice = Math.floor(Math.random() * 6) + 1;
+    if (dice === 6) console.log('Loop is about to end....');
+}
+*/
+
+// COding Challenge #6
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52]
+const tips = []
+const totals = []
+
+const calcTip = function (billAmount) {
+    return billAmount >= 50 && billAmount <= 300 ? billAmount * 0.15 : billAmount * 0.2;
+}
+
+for (let i = 0; i < bills.length; i++) {
+    const tip = calcTip(bills[i])
+    tips.push(tip)
+    totals.push(bills[i] + tip)
+}
+console.log(bills);
+console.log(tips);
+console.log(totals);
+console.log('--------');
+
+// arr = [1, 2, 3, 4, 5] --> 1 + 2 + 3 + 4 + 5 / 5
+let calcAverage = function (arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    return sum / arr.length;
+}
+console.log(calcAverage(totals));
