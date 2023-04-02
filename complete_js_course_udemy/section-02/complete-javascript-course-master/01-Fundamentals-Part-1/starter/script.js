@@ -355,7 +355,8 @@ console.log(`I like to drink ${age >= 18 ? 'Wine 🍷' : 'Water 💧'}`);
 
 // ES5  -  new features version 2009  .. ECMAScript 5 // Support in al web browsers
 // Bable to transpile and polyfil the code -->> Production deployment
-//
+// ES6 -- >> ESNext (future version)
+
 
 
 
