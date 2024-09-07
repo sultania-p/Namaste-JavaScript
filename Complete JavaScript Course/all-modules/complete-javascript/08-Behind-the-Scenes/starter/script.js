@@ -119,3 +119,110 @@ const jonas = {
   },
 };
 jonas.calcAge();
+
+// method borrowing
+const matilda = {
+  year: 2017,
+};
+matilda.calcAge = jonas.calcAge;
+console.log(matilda);
+matilda.calcAge();
+
+const f = jonas.calcAge;
+console.log(f);
+// f(); // just a regular function call and not attached to any object so undefined
+
+// Regular v/s Arrow functions
+const john = {
+  firstName: 'John',
+  year: 1991,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+
+    // solution-1 : resolution to the issue
+    // const self = this;
+    // const isMillenial = function () {
+    //   console.log(this);
+    //   console.log(self.year >= 1981 && self.year <= 1996);
+
+    //   // In a call for function inside the method, this keyword is undefined as a rule
+    //   // console.log(this.year >= 1981 && this.year <= 1996);
+    // };
+
+    // solution-2 : Using Arrow function
+    const isMillenial = () => {
+      console.log(this);
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    isMillenial();
+  },
+
+  greet: () => {
+    console.log(this);
+    console.log(`Hey, ${this.firstName}`);
+  },
+};
+john.greet();
+john.calcAge();
+
+// arguments keyword
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+addExpr(2, 4);
+addExpr(2, 4, 5, 6);
+
+// using arrow function
+var addArrow = (a, b) => {
+  console.log(arguments); // in arrow function arguments keyword is not defined
+  return a + b;
+};
+addArrow(2, 3, 4);
+
+// Primitives and Objects
+const me = {
+  name: 'Jonas',
+  age: 30,
+};
+const friend = me;
+friend.age = 27;
+console.log('Friend: ', friend);
+console.log('Jonas: ', me); // Weird! it updated the aage parameter for the Me object as well...
+
+// primitives -> Number, String, Boolean, Null etc.. -> Primitive types..
+// Objects -> Object literal, Arrays etc -->> Reference types
+// Objects are References type --> Value of an Identifier in Call Stack is a Reference to a address in Heap. Reference to Memory Address in Heap
+// Primitive Types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log('New LastName:', lastName, '; ', 'Old LastName:', oldLastName);
+
+// On Reference Types - Chaging a property value changes for each referecen to the identifier
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+};
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('Before marriage: ', jessica);
+console.log('After marriage: ', marriedJessica);
+
+// Copying Objects.. Only works for 1st level and creates a Shallow COpy and deep copy for any object inside an obejct is not Cloned and works the way w/o copy
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
+};
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis';
+
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+
+console.log('Before marriage: ', jessica2);
+console.log('After marriage: ', jessicaCopy);
